@@ -1,10 +1,10 @@
 
-spa = "&nbsp;&nbsp;&nbsp;";
-pix = "O";
-brk = "<br>";
-lin = "||";
-lastContainer = null;
-gameInterval = null;
+let spa = "&nbsp;&nbsp;&nbsp;";
+let pix = "O";
+let brk = "<br>";
+let lin = "||";
+let lastContainer = null;
+let gameInterval = null;
 
 function NewRaceGame(){
     if(gameInterval != null){
@@ -20,7 +20,7 @@ function NewRaceGame(){
     maxScore = 0;
     updtesCounter = 0;
     if(lastContainer != null){
-        lastContainer.remove(lastContainer);
+        lastContainer.remove();
     }
     let container = document.createElement("div");
     lastContainer = container;

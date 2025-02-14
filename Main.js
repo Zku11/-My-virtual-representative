@@ -3,12 +3,14 @@ queuedFunctions = [];
 allowUserInteraction = false;
 executeQueuedFunctionsInterval = null;
 scrollInterval = null;
+dialogeAmountToOptimize = 7;
+dialogeAmount = 0;
+let allDialoges = [];
 
 function Start(){
     GenerateStates();
     EnqueueFunction(function(){LucasDialog();});
     EnqueueFunction(function(){UpdateOptions();});
-    let body = document.getElementsByTagName("body");
 }
 
 function StartScrollInterval(){
@@ -32,15 +34,27 @@ function StartQueuedFunctionsInterval(){
 }
 
 function LucasDialog(){
+    dialogeAmount++;
+    if(dialogeAmount > dialogeAmountToOptimize){
+        allDialoges[0].remove();
+        allDialoges.shift();
+    }
     chatContainer = document.getElementById("chatContainer");
     dialogA = NewLucasMessage("./images/lucasIcon.png", currentState.lucasMessage());
     chatContainer.appendChild(dialogA);
+    allDialoges.push(dialogA);
 }
 
 function VisitorDialog(){
+    dialogeAmount++;
+    if(dialogeAmount > dialogeAmountToOptimize){
+        allDialoges[0].remove();
+        allDialoges.shift();
+    }
     let chatContainer = document.getElementById("chatContainer");
     let dialog = NewVisitorMessage("./images/visitorIcon.png", currentState.visitorMessage());
     chatContainer.appendChild(dialog);
+    allDialoges.push(dialog);
 }
 
 function UpdateOptions(){

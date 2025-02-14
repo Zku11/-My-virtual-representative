@@ -69,7 +69,7 @@ function GenerateStates(){
     let miniGameState = NewState([backToInitialState], function(){return GetDialogLine("gameQuestion")}, CreateGameMessage, null);
     states.push(miniGameState);
     let switchToSpanishState = NewState([backToInitialState], function(){return GetDialogLine("InSpanish")}, CreateToSpanishMessage, function(){SelectSpanish()});
-    let switchToEnglishState = NewState([switchToSpanishState, backToInitialState], function(){return GetDialogLine("InEnglishPlease")}, CreateToEnglishMessage, function(){SelectEnglish()});
+    let switchToEnglishState = NewState([backToInitialState, switchToSpanishState], function(){return GetDialogLine("InEnglishPlease")}, CreateToEnglishMessage, function(){SelectEnglish()});
     let initialState = NewState(states, function(){return GetDialogLine("goToInit")}, CreateIitialMessage, null);
     let presentationState = NewState([initialState, switchToEnglishState], "x", CreatePresentationMessage, null);
     currentState = presentationState;
@@ -382,12 +382,6 @@ function CreatePersonalInformationMessage(){
     let locationText = document.createTextNode("Argentina");
     locationMessageLine.appendChild(locationText);
     creatMesagge.appendChild(locationMessageLine);
-    let phoneMessageLine = CreateMessageLine();
-    let watssappImg = NewSmallImage("./images/WhatsApp.webp");
-    /*phoneMessageLine.appendChild(watssappImg);
-    let phoneText = document.createTextNode("Mi teléfono es 549 2473 448788");
-    phoneMessageLine.appendChild(phoneText);
-    creatMesagge.appendChild(phoneMessageLine);*/
     let mesaageLine3 = CreateMessageLine();
     let linkElement = document.createElement("a");
     linkElement.setAttribute("rel", "noreferrer");
