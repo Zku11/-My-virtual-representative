@@ -214,9 +214,9 @@ function CreateLivemediaMessage(){
     mesaageLine1.appendChild(textnode2);
     creatMesagge.appendChild(mesaageLine1);
     let mesaageLine2 = CreateMessageLine();
-    let photo1 = NewMediumPortraitImage("./images/ligthsOff.webp", "Ligths Off (Móviles)");
+    let photo1 = NewMediumPortraitImage("./images/ligthsOff.webp", "Ligths Off");
     mesaageLine2.appendChild(photo1);
-    let photo2 = NewMediumPortraitImage("./images/seaPets.webp", "Sea Pets (Móviles)");
+    let photo2 = NewMediumPortraitImage("./images/seaPets.webp", "Sea Pets");
     mesaageLine2.appendChild(photo2);
     creatMesagge.appendChild(mesaageLine2);
     let mesaageLine3 = CreateMessageLine();
@@ -595,7 +595,7 @@ function CreateZetaExplorerMessage(){
 }
 
 function CreateSeaPetsMessage(){
-    return NewPersonalProject("Sea Pets: Match & Merge (programado para Livemedia)",
+    return NewPersonalProject("Sea Pets: Match & Merge",
         GetDialogLine("seaPetsLineDescription"),
         ["./images/seaPets/screen1.webp", "./images/seaPets/screen2.webp", "./images/seaPets/screen3.webp", "./images/seaPets/screen4.webp"],
         null,

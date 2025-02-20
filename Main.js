@@ -6,11 +6,13 @@ scrollInterval = null;
 dialogeAmountToOptimize = 7;
 dialogeAmount = 0;
 let allDialoges = [];
+let zoomDialog;
 
 function Start(){
     GenerateStates();
     EnqueueFunction(function(){LucasDialog();});
     EnqueueFunction(function(){UpdateOptions();});
+    
 }
 
 function StartScrollInterval(){
@@ -99,7 +101,7 @@ function clickFunction(e){
         case optionsIds[7]:
             SelectChild(7);
             break;
-    } 
+    }
     DeletePreviousOptions();
     VisitorDialog();
     EnqueueFunction(function(){

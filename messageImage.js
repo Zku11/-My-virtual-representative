@@ -11,6 +11,7 @@ function NewMediumLandscapeImage(imageSrc, imgDescription){
     let img = document.createElement("img");
     img.classList = "medium-landscape-dialog-image";
     img.src = imageSrc;
+    addZoomEvent(img);
     containerDiv.appendChild(img);
     let description = document.createElement("p");
     let text = document.createTextNode(imgDescription);
@@ -26,6 +27,7 @@ function NewMediumPortraitImage(imageSrc, imgDescription){
     let img = document.createElement("img");
     img.classList = "medium-portrait-dialog-image";
     img.src = imageSrc;
+    addZoomEvent(img);
     containerDiv.appendChild(img);
     let description = document.createElement("p");
     let text = document.createTextNode(imgDescription);
@@ -33,4 +35,19 @@ function NewMediumPortraitImage(imageSrc, imgDescription){
     description.appendChild(text);
     containerDiv.appendChild(description);
     return containerDiv;
+}
+
+function addZoomEvent(element){
+    element.addEventListener("click", () => {ZoomImage(element.src)});
+}
+
+function ZoomImage(imgSrc){
+    let image = document.getElementById("zoomedImage");
+    image.src = imgSrc;
+    let zoomDialog = document.getElementById("imgZoomDialog");
+    zoomDialog.addEventListener("click", ()=>{
+        let zoomDialog = document.getElementById("imgZoomDialog");
+        zoomDialog.close();
+    });
+    zoomDialog.showModal();
 }
