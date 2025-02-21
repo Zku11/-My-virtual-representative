@@ -102,7 +102,6 @@ function GameUpdate(){
     playerCar = NewCar(currentPlayerPosition)
     gameScreenString += playerCar.visualCar;
     if(currentRaceRivals[0].posx == currentPlayerPosition){
-        console.log("PERDISTE");
         currentScore = 0;
         raceSpeed = 0;
     }
@@ -132,7 +131,6 @@ function NewCar(newPositionX){
         posY: 5,
         visualCar: visual
     }
-    console.log("Spawn Rival Car, pos: " + newPositionX);
     return car;
 }
 
@@ -141,7 +139,6 @@ function NewSpace(){
         posY: 5,
         visualCar: VisualSpace()
     }
-    console.log("Spawn Space");
     return space;
 }
 

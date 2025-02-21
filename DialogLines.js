@@ -142,6 +142,10 @@ function GetDialogLine(lineIdentifier){
             return GamesLineA();
         case "androidAppA":
             return AndroidAppsLineA();
+        case "moreGames":
+            return MoreGamesLine();
+        case "moreGamesLinks":
+            return MoreGamesLinkLine();
         //-------Bots Chaos---------
         case "botsChaos":
             return BotsChaosLine();
@@ -687,6 +691,20 @@ function GamesLineA(){
     ));
 }
 
+function MoreGamesLine(){
+    return LineLanguageSelection(NewLine(
+        "¿Tienes más juegos?",
+        "Do you have more games?"
+    ));
+}
+
+function MoreGamesLinkLine(){
+    return LineLanguageSelection(NewLine(
+        "Puede encontrar más juegos en:",
+        "You can find more games at:"
+    ));
+}
+
 function AndroidAppsLineA(){
     return LineLanguageSelection(NewLine(
         "Desarrollé estas apps, ¿sobre cuál quieres saber más?",
@@ -815,8 +833,8 @@ function LigthsOffLine(){
 
 function LigthsOffLineDescription(){
     return LineLanguageSelection(NewLine(
-        "En este juego debes intentar que el aro no toque el cable y apagar todos los interruptores hasta llegar al final.",
-        "In this game you must try to keep the ring from touching the cable and turn off all the switches until you reach the end."
+        "En este juego debes intentar que el aro no toque el cable y apagar todos los interruptores hasta llegar al final. Este juego actualmente no está publicado.",
+        "In this game you must try to keep the ring from touching the cable and turn off all the switches until you reach the end. This game is currently unreleased."
     ));
 }
 

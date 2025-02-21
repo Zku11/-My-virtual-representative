@@ -10,6 +10,7 @@ function GenerateStates(){
     let backToLivemediaState = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(livemediaState)});
     let backToSeaPetsWorkStore = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(SeaPetsWorkState)});
     let specialty = NewState([backToInitialState], function(){return GetDialogLine("specialtyQuestion")}, CreateSpecialityMessage, null);
+    let backToMoreGmaes = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(moreGamesState)});
     states.push(specialty);
     //----Bots chaos----
     let backToBotsChaosState = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(botsChaosState)});
@@ -34,21 +35,23 @@ function GenerateStates(){
     //-----Mecha Snake-----
     let backToMechaSnakeState = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(mechaSnakeState)});
     let mechaSnakeStoreState = NewState([backToMechaSnakeState, backToInitialState], function(){return GetDialogLine("showStoresLinks")}, CreateMechaSnakeStoreMessage, null);
-    let mechaSnakeState = NewState([mechaSnakeStoreState, backToGamesPortfolioState, backToInitialState], function(){return GetDialogLine("mechaSnake")}, CreateMechaSnakeMessage, null);
+    let mechaSnakeState = NewState([mechaSnakeStoreState, backToMoreGmaes, backToInitialState], function(){return GetDialogLine("mechaSnake")}, CreateMechaSnakeMessage, null);
     //------Sea Pets-------
     let backToSeaPets = NewState(null, function(){return GetDialogLine("goBack")}, null, function(){GoBack(SeaPetsState)});
     let seaPetsStoreState = NewState([backToSeaPets, backToInitialState], function(){return GetDialogLine("showStoresLinks")}, CreateSeaPetsStoreMessage, null);
-    let SeaPetsState = NewState([seaPetsStoreState, backToGamesPortfolioState, backToInitialState], function(){return GetDialogLine("seaPets")}, CreateSeaPetsMessage, null);
+    let SeaPetsState = NewState([seaPetsStoreState, backToMoreGmaes, backToInitialState], function(){return GetDialogLine("seaPets")}, CreateSeaPetsMessage, null);
     let seaPetsWorkStoreState = NewState([backToSeaPetsWorkStore, backToInitialState], function(){return GetDialogLine("showStoresLinks")}, CreateSeaPetsStoreMessage, null);
     let SeaPetsWorkState = NewState([seaPetsWorkStoreState, backToLivemediaState, backToInitialState], function(){return GetDialogLine("seaPets")}, CreateSeaPetsMessage, null);
     //------Ligths off-------
     let ligthsOffWorkState = NewState([backToLivemediaState, backToInitialState], function(){return GetDialogLine("ligthsOff")}, CreateLigthsOffMessage, null);
+    let ligthsOffState = NewState([backToMoreGmaes, backToInitialState], function(){return GetDialogLine("ligthsOff")}, CreateLigthsOffMessage, null);
     //-----Mobiamp---------
     let mobiampState = NewState([backToAndroidPortfolioState, backToInitialState], function(){return GetDialogLine("mobiAmp")}, CreateMobiAmpMessage, null);
     //----Zeta Explorer----
     let zetaExplorerState = NewState([backToAndroidPortfolioState, backToInitialState], function(){return GetDialogLine("zetaExplorer")}, CreateZetaExplorerMessage, null);
     //---------------------
-    let gamesPortfolioState = NewState([botsChaosState, geniusAtWorkState, quadrupedMatchState, protoAkaneState, mechaSnakeState, SeaPetsState, backToPortfolioState, backToInitialState], function(){return GetDialogLine("gamesQuestion")}, CreateGamesPortfolioMessage, null);
+    let moreGamesState = NewState([mechaSnakeState, SeaPetsState, ligthsOffState, backToGamesPortfolioState, backToInitialState], function(){return GetDialogLine("moreGames")}, CreateMoreGamesMessage, null);
+    let gamesPortfolioState = NewState([botsChaosState, geniusAtWorkState, protoAkaneState, quadrupedMatchState, moreGamesState, backToPortfolioState, backToInitialState], function(){return GetDialogLine("gamesQuestion")}, CreateGamesPortfolioMessage, null);
     let androidAppsportfolio = NewState([mobiampState, zetaExplorerState, backToPortfolioState, backToInitialState], function(){return GetDialogLine("androidAppsQuestion")}, CreateAndroidAplicationsMessage, null);
     let webPortfolio = NewState([backToPortfolioState, backToInitialState], function(){return GetDialogLine("webAppsQuestion")}, CreateWebPortfolioMessage, null);
     let portfolioState = NewState([gamesPortfolioState, androidAppsportfolio, webPortfolio, backToInitialState], function(){return GetDialogLine("portfolioQuestion")}, CreatePortfolioMessage, null);
@@ -445,11 +448,37 @@ function CreateGamesPortfolioMessage(){
     mesaageLine2.appendChild(protoImg);
     let quadrupedImg = NewMediumPortraitImage("./images/quadrupedMatch/logo.png", "Quadruped Match");
     mesaageLine2.appendChild(quadrupedImg);
+    creatMesagge.appendChild(mesaageLine2);
+    return creatMesagge;
+}
+
+function CreateMoreGamesMessage(){
+    let creatMesagge = CreateMessage();
+    let messaageLine1 = CreateMessageLine();
+    let textnode = document.createTextNode(GetDialogLine("gamesPortfolio"));
+    messaageLine1.appendChild(textnode);
+    creatMesagge.appendChild(messaageLine1);
+    let mesaageLine2 = CreateMessageLine();
     let mechaSnakeImg = NewMediumPortraitImage("./images/mechaSnake/logo.jpg", "Mecha Snake");
     mesaageLine2.appendChild(mechaSnakeImg);
     let seaPetsImg = NewMediumPortraitImage("./images/seaPets/logowebp.webp", "Sea Pets");
     mesaageLine2.appendChild(seaPetsImg);
+    let ligthsOffImg = NewMediumPortraitImage("./images/LigthsOff/logo.webp", "Lights Off");
+    mesaageLine2.appendChild(ligthsOffImg);
     creatMesagge.appendChild(mesaageLine2);
+    let messaageLine4 = CreateMessageLine();
+    let textnode2 = document.createTextNode(GetDialogLine("moreGamesLinks"));
+    messaageLine4.appendChild(textnode2);
+    creatMesagge.appendChild(messaageLine4);
+    let mesaageLine3 = CreateMessageLine();
+    let linkElement = document.createElement("a");
+    linkElement.setAttribute("rel", "noreferrer");
+    linkElement.setAttribute("target", "_blank");
+    linkElement.href = "https://lucas-fernandez.itch.io/";
+    let textnode3 = document.createTextNode("https://lucas-fernandez.itch.io/");
+    linkElement.appendChild(textnode3);
+    mesaageLine3.appendChild(linkElement);
+    creatMesagge.appendChild(mesaageLine3);
     return creatMesagge;
 }
 
