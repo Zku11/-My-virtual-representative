@@ -3,7 +3,7 @@ queuedFunctions = [];
 allowUserInteraction = false;
 executeQueuedFunctionsInterval = null;
 scrollInterval = null;
-dialogeAmountToOptimize = 10;
+dialogeAmountToOptimize = 6;
 dialogeAmount = 0;
 let allDialoges = [];
 
@@ -11,7 +11,6 @@ function Start(){
     GenerateStates();
     EnqueueFunction(function(){LucasDialog();});
     EnqueueFunction(function(){UpdateOptions();});
-    
 }
 
 function StartScrollInterval(){

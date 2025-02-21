@@ -5,6 +5,16 @@ let brk = "<br>";
 let lin = "||";
 let lastContainer = null;
 let gameInterval = null;
+let currentScorePanel;
+let highScorePanel;
+let raceSpeed = 0;
+let currentRaceRivals = [];
+let spawnSpaceTime = 0;
+let playerCar = null;
+let currentPlayerPosition = 0;
+let currentScore = 0;
+let maxScore = 0;
+let updtesCounter = 0;
 
 function NewRaceGame(){
     if(gameInterval != null){
@@ -17,7 +27,6 @@ function NewRaceGame(){
     playerCar = null;
     currentPlayerPosition = 0;
     currentScore = 0;
-    maxScore = 0;
     updtesCounter = 0;
     if(lastContainer != null){
         lastContainer.remove();
@@ -75,6 +84,11 @@ function getRandomInt(max) {
 }
   
 function GameUpdate(){
+    currentScorePanel = document.getElementById("raceScoreText");
+    highScorePanel = document.getElementById("highScoreText");
+    if(currentScorePanel == null){
+        clearInterval(gameInterval);
+    }
     updtesCounter++;
     if(updtesCounter < 200 - raceSpeed){
         return;
@@ -111,9 +125,9 @@ function GameUpdate(){
             maxScore = currentScore;
         }
     }
-    document.getElementById("raceScoreText").innerHTML = currentScore;
-    document.getElementById("highScoreText").innerHTML = maxScore;
     gamePanel.innerHTML = gameScreenString;
+    currentScorePanel.innerHTML = currentScore;
+    highScorePanel.innerHTML = maxScore;
 }
 
 function NewCar(newPositionX){
