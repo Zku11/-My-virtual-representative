@@ -180,6 +180,11 @@ function GetDialogLine(lineIdentifier){
             return SeaPetsLine();
         case "seaPetsLineDescription":
             return SeaPetsLineDescription();
+        //-----Ligths off---------
+        case "ligthsOff":
+            return LigthsOffLine();
+        case "ligthsOffDescription":
+            return LigthsOffLineDescription();
         //-------MobiAmp----------
         case "mobiAmp":
             return MobiAmpLine();
@@ -798,6 +803,20 @@ function SeaPetsLineDescription(){
     return LineLanguageSelection(NewLine(
         "¡Combina personajes! Déjalas caer para fusionarlas en personajes más grandes. Evita que el espacio se llene de gente.",
         "Merge characters! Drop them to merge them into larger characters. Prevent the space from filling up with people."
+    ));
+}
+
+function LigthsOffLine(){
+    return LineLanguageSelection(NewLine(
+        "Háblame de Lights Off.",
+        "Tell me about Lights Off."
+    ));
+}
+
+function LigthsOffLineDescription(){
+    return LineLanguageSelection(NewLine(
+        "En este juego debes intentar que el aro no toque el cable y apagar todos los interruptores hasta llegar al final.",
+        "In this game you must try to keep the ring from touching the cable and turn off all the switches until you reach the end."
     ));
 }
 

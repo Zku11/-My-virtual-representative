@@ -3,10 +3,9 @@ queuedFunctions = [];
 allowUserInteraction = false;
 executeQueuedFunctionsInterval = null;
 scrollInterval = null;
-dialogeAmountToOptimize = 7;
+dialogeAmountToOptimize = 10;
 dialogeAmount = 0;
 let allDialoges = [];
-let zoomDialog;
 
 function Start(){
     GenerateStates();
@@ -18,10 +17,10 @@ function Start(){
 function StartScrollInterval(){
     window.scrollTo(0, document.body.scrollHeight);
     scrollInterval = setInterval(function(){window.scrollBy({
-        top: 12,
+        top: 10,
         left: 0,
         behavior: "smooth",
-      });}, 30);
+      });}, 20);
 }
 
 function StopScrollInterval(){
@@ -32,7 +31,7 @@ function StopScrollInterval(){
 }
 
 function StartQueuedFunctionsInterval(){
-    executeQueuedFunctionsInterval = setInterval(function(){ExecuteQueuedFunctions()}, 900);
+    executeQueuedFunctionsInterval = setInterval(function(){ExecuteQueuedFunctions()}, 700);
 }
 
 function LucasDialog(){

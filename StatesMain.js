@@ -41,6 +41,8 @@ function GenerateStates(){
     let SeaPetsState = NewState([seaPetsStoreState, backToGamesPortfolioState, backToInitialState], function(){return GetDialogLine("seaPets")}, CreateSeaPetsMessage, null);
     let seaPetsWorkStoreState = NewState([backToSeaPetsWorkStore, backToInitialState], function(){return GetDialogLine("showStoresLinks")}, CreateSeaPetsStoreMessage, null);
     let SeaPetsWorkState = NewState([seaPetsWorkStoreState, backToLivemediaState, backToInitialState], function(){return GetDialogLine("seaPets")}, CreateSeaPetsMessage, null);
+    //------Ligths off-------
+    let ligthsOffWorkState = NewState([backToLivemediaState, backToInitialState], function(){return GetDialogLine("ligthsOff")}, CreateLigthsOffMessage, null);
     //-----Mobiamp---------
     let mobiampState = NewState([backToAndroidPortfolioState, backToInitialState], function(){return GetDialogLine("mobiAmp")}, CreateMobiAmpMessage, null);
     //----Zeta Explorer----
@@ -52,7 +54,7 @@ function GenerateStates(){
     let portfolioState = NewState([gamesPortfolioState, androidAppsportfolio, webPortfolio, backToInitialState], function(){return GetDialogLine("portfolioQuestion")}, CreatePortfolioMessage, null);
     // State: experience
     let laAnonimaState = NewState([backToExperienceState, backToInitialState], function(){return GetDialogLine("laAnonimaQuestion")}, CreateLaAnonimaMessage, null);
-    let livemediaState = NewState([SeaPetsWorkState, backToExperienceState, backToInitialState], function(){return GetDialogLine("LivemediaQuestion")}, CreateLivemediaMessage, null);
+    let livemediaState = NewState([SeaPetsWorkState, ligthsOffWorkState, backToExperienceState, backToInitialState], function(){return GetDialogLine("LivemediaQuestion")}, CreateLivemediaMessage, null);
     let independentState = NewState([portfolioState, backToExperienceState, backToInitialState], function(){return GetDialogLine("independentQuestion")}, CreateIndependentMessage, null);
     let experienceState = NewState([independentState, livemediaState, laAnonimaState, backToInitialState], function(){return GetDialogLine("jobExperienceQuestion")}, CreateExperienceMessage, null);
     states.push(experienceState);
@@ -595,9 +597,19 @@ function CreateZetaExplorerMessage(){
 }
 
 function CreateSeaPetsMessage(){
-    return NewPersonalProject("Sea Pets: Match & Merge",
+    return NewPersonalProject("Sea Pets: Match & Merge (Livemedia Digital Agency)",
         GetDialogLine("seaPetsLineDescription"),
         ["./images/seaPets/screen1.webp", "./images/seaPets/screen2.webp", "./images/seaPets/screen3.webp", "./images/seaPets/screen4.webp"],
+        null,
+        [NewCsharpSkill(), NewUnitySkill()]
+    );
+}
+
+function CreateLigthsOffMessage(){
+    return NewPersonalProject(
+        "Ligths Off (Livemedia Digital Agency)",
+        GetDialogLine("ligthsOffDescription"),
+        ["./images/LigthsOff/screen1.webp", "./images/LigthsOff/screen2.webp", "./images/LigthsOff/screen3.webp", "./images/LigthsOff/screen4.webp"],
         null,
         [NewCsharpSkill(), NewUnitySkill()]
     );
