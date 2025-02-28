@@ -1,10 +1,10 @@
 window.onload = Start;
-queuedFunctions = [];
-allowUserInteraction = false;
-executeQueuedFunctionsInterval = null;
-scrollInterval = null;
-dialogeAmountToOptimize = 6;
-dialogeAmount = 0;
+let queuedFunctions = [];
+let allowUserInteraction = true;
+let executeQueuedFunctionsInterval = null;
+let scrollInterval = null;
+let dialogeAmountToOptimize = 10;
+let dialogeAmount = 0;
 let allDialoges = [];
 
 function Start(){
@@ -18,7 +18,7 @@ function StartScrollInterval(){
     scrollInterval = setInterval(function(){window.scrollBy({
         top: 10,
         left: 0,
-        behavior: "smooth",
+        behavior: "instant",
       });}, 20);
 }
 
@@ -73,6 +73,7 @@ function clickFunction(e){
     if(!allowUserInteraction){
         return;
     }
+    allowUserInteraction=false;
     EnqueueFunction(function(){
             StartScrollInterval();
         switch(e.target.id){
@@ -105,6 +106,7 @@ function clickFunction(e){
         VisitorDialog();
         EnqueueFunction(function(){
             LucasDialog();
+            allowUserInteraction = true;
         });
         EnqueueFunction(function(){
             UpdateOptions();
@@ -122,13 +124,11 @@ function EnqueueFunction(delayedFunction){
 }
 
 function ExecuteQueuedFunctions(){
-    allowUserInteraction=false;
     let toExecute = queuedFunctions.shift();
     if(toExecute != null){
         toExecute();
     }
     else{
-        allowUserInteraction = true;
         clearInterval(executeQueuedFunctionsInterval);
         executeQueuedFunctionsInterval = null;
     }

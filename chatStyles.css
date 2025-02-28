@@ -236,7 +236,7 @@ a{
     #chatContainer{
         width: 98%;
         margin: 1%;
-        margin-bottom: 50%;
+        margin-bottom: 70%;
     }
 
     #optionsPanel{
@@ -282,6 +282,10 @@ a{
     }
 
     body{
-        font-size: 1.2em;
+        font-size: 1.1em;
+    }
+
+    .message-line{
+        margin-bottom: 6%;
     }
 }
