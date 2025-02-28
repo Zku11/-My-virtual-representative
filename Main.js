@@ -73,42 +73,45 @@ function clickFunction(e){
     if(!allowUserInteraction){
         return;
     }
-    StartScrollInterval();
-    switch(e.target.id){
-        case optionsIds[0]:
-            SelectChild(0);
-            break;
-        case optionsIds[1]:
-            SelectChild(1);
-            break;
-        case optionsIds[2]:
-            SelectChild(2);
-            break;
-        case optionsIds[3]:
-            SelectChild(3);
-            break;
-        case optionsIds[4]:
-            SelectChild(4);
-            break;
-        case optionsIds[5]:
-            SelectChild(5);
-            break;
-        case optionsIds[6]:
-            SelectChild(6);
-            break;
-        case optionsIds[7]:
-            SelectChild(7);
-            break;
-    }
-    DeletePreviousOptions();
-    VisitorDialog();
     EnqueueFunction(function(){
-        LucasDialog();
+            StartScrollInterval();
+        switch(e.target.id){
+            case optionsIds[0]:
+                SelectChild(0);
+                break;
+            case optionsIds[1]:
+                SelectChild(1);
+                break;
+            case optionsIds[2]:
+                SelectChild(2);
+                break;
+            case optionsIds[3]:
+                SelectChild(3);
+                break;
+            case optionsIds[4]:
+                SelectChild(4);
+                break;
+            case optionsIds[5]:
+                SelectChild(5);
+                break;
+            case optionsIds[6]:
+                SelectChild(6);
+                break;
+            case optionsIds[7]:
+                SelectChild(7);
+                break;
+        }
+        DeletePreviousOptions();
+        VisitorDialog();
+        EnqueueFunction(function(){
+            LucasDialog();
+        });
+        EnqueueFunction(function(){
+            UpdateOptions();
+            StopScrollInterval();
+        });
     });
-    EnqueueFunction(function(){
-        UpdateOptions();
-        StopScrollInterval();
-    });
+    
 }
 
 function EnqueueFunction(delayedFunction){
