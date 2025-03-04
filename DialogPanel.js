@@ -14,6 +14,18 @@ function NewLucasMessage(profileImageSrc, message){
     paragraph.appendChild(message);
     containerDiv.appendChild(nameParagraph);
     containerDiv.appendChild(paragraph);
+    DialogSound();
+    return containerDiv;
+}
+
+function NewWritingMessage(){
+    let containerDiv = document.createElement("div");
+    containerDiv.classList = "writingPanel";
+    let paragraph = document.createElement("p");
+    paragraph.classList = "";
+    let textnode = document.createTextNode(GetDialogLine("writing..."));
+    paragraph.appendChild(textnode);
+    containerDiv.appendChild(paragraph);
     return containerDiv;
 }
 
@@ -30,9 +42,15 @@ function NewVisitorMessage(profileImageSrc, message){
     containerDiv.appendChild(profileImg);
     let nameParagraph = document.createElement("p");
     nameParagraph.classList = "chat-username";
-    let visitorName = document.createTextNode("Tú");
+    let visitorName = document.createTextNode(GetDialogLine("visitorName"));
     nameParagraph.appendChild(visitorName);
     containerDiv.appendChild(nameParagraph);
     containerDiv.appendChild(paragraph);
+    DialogSound();
     return containerDiv;
+}
+
+function DialogSound(){
+    var audio = new Audio("./Sounds/dialog.wav");
+    audio.play();
 }

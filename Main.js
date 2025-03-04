@@ -6,9 +6,12 @@ let scrollInterval = null;
 let dialogeAmountToOptimize = 10;
 let dialogeAmount = 0;
 let allDialoges = [];
+let lastWritingDialog = null;
 
 function Start(){
     GenerateStates();
+    EnqueueFunction(function(){WritingDialog()});
+    EnqueueFunction(function(){});
     EnqueueFunction(function(){LucasDialog();});
     EnqueueFunction(function(){UpdateOptions();});
 }
@@ -30,19 +33,26 @@ function StopScrollInterval(){
 }
 
 function StartQueuedFunctionsInterval(){
-    executeQueuedFunctionsInterval = setInterval(function(){ExecuteQueuedFunctions()}, 700);
+    executeQueuedFunctionsInterval = setInterval(function(){ExecuteQueuedFunctions()}, 600);
 }
 
 function LucasDialog(){
+    lastWritingDialog.remove();
     dialogeAmount++;
     if(dialogeAmount > dialogeAmountToOptimize){
         allDialoges[0].remove();
         allDialoges.shift();
     }
     chatContainer = document.getElementById("chatContainer");
-    dialogA = NewLucasMessage("./images/lucasIcon.png", currentState.lucasMessage());
+    dialogA = NewLucasMessage("./images/myProfileImg.jpg", currentState.lucasMessage());
     chatContainer.appendChild(dialogA);
     allDialoges.push(dialogA);
+}
+
+function WritingDialog(){
+    chatContainer = document.getElementById("chatContainer");
+    lastWritingDialog = NewWritingMessage();
+    chatContainer.appendChild(lastWritingDialog);
 }
 
 function VisitorDialog(){
@@ -105,6 +115,10 @@ function clickFunction(e){
         DeletePreviousOptions();
         VisitorDialog();
         EnqueueFunction(function(){
+            WritingDialog();
+        });
+        EnqueueFunction(function(){});
+        EnqueueFunction(function(){
             LucasDialog();
             allowUserInteraction = true;
         });
@@ -113,7 +127,6 @@ function clickFunction(e){
             StopScrollInterval();
         });
     });
-    
 }
 
 function EnqueueFunction(delayedFunction){

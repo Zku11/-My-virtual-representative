@@ -12,6 +12,10 @@ function GetDialogLine(lineIdentifier){
             return InitialVisitorLine();
         case "screenShot":
             return ScreenShoot();
+        case "visitorName":
+            return VisitorNameLine();
+        case "writing...":
+            return WritingLine();
         //------Training---------
         case "trainingQuestion":
             return TrainingQuestion();
@@ -144,6 +148,8 @@ function GetDialogLine(lineIdentifier){
             return AndroidAppsLineA();
         case "moreGames":
             return MoreGamesLine();
+        case "moreGamesPortfolio":
+            return MoreGamesAnswerLine();
         case "moreGamesLinks":
             return MoreGamesLinkLine();
         //-------Bots Chaos---------
@@ -282,6 +288,20 @@ function ScreenShoot(){
     return LineLanguageSelection(NewLine(
         "Captura de pantalla",
         "Screenshot"
+    ));
+}
+
+function VisitorNameLine(){
+    return LineLanguageSelection(NewLine(
+        "Tú (visitante)",
+        "You (visitor)"
+    ));
+}
+
+function WritingLine(){
+    return LineLanguageSelection(NewLine(
+        "Lucas está escribiendo...",
+        "Lucas is writing..."
     ));
 }
 
@@ -695,6 +715,13 @@ function MoreGamesLine(){
     return LineLanguageSelection(NewLine(
         "¿Tienes más juegos?",
         "Do you have more games?"
+    ));
+}
+
+function MoreGamesAnswerLine(){
+    return LineLanguageSelection(NewLine(
+        "Si, aquí hay más juegos, ¿sobre cuál quieres saber más?",
+        "Yes, there are more games here, which one do you want to know more about?"
     ));
 }
 

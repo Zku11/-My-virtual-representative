@@ -21,12 +21,17 @@ body{
     background-position: center;
 }
 
+.writingPanel{
+    color: white;
+    margin: auto;
+}
+
 .profile-icon{
     width: 6%;
     height: 6%;
     padding: 2%;
     color: blue;
-    border-radius: 30px;
+    border-radius: 50px;
 }
 
 .dialog-panel{
@@ -109,7 +114,7 @@ body{
 }
 
 #optionsPanel{
-    width: 35%;
+    width: 40%;
     position: fixed;
     bottom: 3%;
     margin: 0 30%;
@@ -145,7 +150,7 @@ a, a:visited{
 
 .image-card{
     display: inline-block;
-    width: 25%;
+    width: 20%;
     height: 20%;
     margin: 0 1%;
 }

@@ -455,7 +455,7 @@ function CreateGamesPortfolioMessage(){
 function CreateMoreGamesMessage(){
     let creatMesagge = CreateMessage();
     let messaageLine1 = CreateMessageLine();
-    let textnode = document.createTextNode(GetDialogLine("gamesPortfolio"));
+    let textnode = document.createTextNode(GetDialogLine("moreGamesPortfolio"));
     messaageLine1.appendChild(textnode);
     creatMesagge.appendChild(messaageLine1);
     let mesaageLine2 = CreateMessageLine();
