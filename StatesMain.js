@@ -147,6 +147,7 @@ function CreateSpecialityMessage(){
     skillsLine1.appendChild(NewUnitySkill());
     skillsLine1.appendChild(NewCsharpSkill());
     skillsLine1.appendChild(NewOopSkill());
+    skillsLine1.appendChild(NewDesignPatternsSkill());
     skillsLine1.appendChild(NewBlenderSkill());
     let mesaageLine3 = CreateMessageLine();
     let textnode3 = document.createTextNode(GetDialogLine("specialtyC"));
@@ -182,6 +183,7 @@ function CreateSpecialityMessage(){
     let mesaageLine6 = CreateMessageLine();
     mesaageLine6.appendChild(NewElectricitySkill());
     mesaageLine6.appendChild(NewElectronicsSkill());
+    mesaageLine6.appendChild(NewVideoEditingSkill());
     creatMesagge.appendChild(mesaageLine5);
     creatMesagge.appendChild(mesaageLine6);
     return creatMesagge;
@@ -388,32 +390,17 @@ function CreatePersonalInformationMessage(){
     locationMessageLine.appendChild(locationText);
     creatMesagge.appendChild(locationMessageLine);
     let mesaageLine3 = CreateMessageLine();
-    let linkElement = document.createElement("a");
-    linkElement.setAttribute("rel", "noreferrer");
-    linkElement.setAttribute("target", "_blank");
-    linkElement.href = "mailto:lucaferan@gmail.com";
-    let textnode3 = document.createTextNode("Email: lucaferan@gmail.com");
-    linkElement.appendChild(textnode3);
-    mesaageLine3.appendChild(linkElement);
+    mesaageLine3.appendChild(NewLink("Email: lucaferan@gmail.com", "lucaferan@gmail.com", "./images/gmailIcon.png"));
     creatMesagge.appendChild(mesaageLine3);
     let mesaageLine4 = CreateMessageLine();
-    let linkElement2 = document.createElement("a");
-    linkElement2.setAttribute("rel", "noreferrer");
-    linkElement2.setAttribute("target", "_blank");
-    linkElement2.href = "https://www.linkedin.com/in/lucasferr87/";
-    let textnode4 = document.createTextNode("Linkedin: /in/lucasferr87");
-    linkElement2.appendChild(textnode4);
-    mesaageLine4.appendChild(linkElement2);
+    mesaageLine4.appendChild(NewLink("https://www.linkedin.com/in/lucasferr87/", "/in/lucasferr87/", "./images/linkedinIcon.png"));
     creatMesagge.appendChild(mesaageLine4);
     let mesaageLine5 = CreateMessageLine();
-    let linkElement3 = document.createElement("a");
-    linkElement3.setAttribute("rel", "noreferrer");
-    linkElement3.setAttribute("target", "_blank");
-    linkElement3.href = "https://github.com/Zku11";
-    let textnode5 = document.createTextNode("GitHub: github.com/Zku11");
-    linkElement3.appendChild(textnode5);
-    mesaageLine5.appendChild(linkElement3);
+    mesaageLine5.appendChild(NewLink("https://github.com/Zku11", "github.com/Zku11", "./images/gitHubIcon.png"));
     creatMesagge.appendChild(mesaageLine5);
+    let mesaageLine6 = CreateMessageLine();
+    mesaageLine6.appendChild(NewLink("https://www.youtube.com/@lucasfernandez2700", "www.youtube.com/@lucasfernandez2700", "./images/youtubeIcon.png"));
+    creatMesagge.appendChild(mesaageLine6);
     return creatMesagge;
 }
 
@@ -526,7 +513,7 @@ function CreateWebPortfolioMessage(){
     linkElement3.href = "https://github.com/Zku11";
     let textnode5 = document.createTextNode("GitHub: github.com/Zku11");
     linkElement3.appendChild(textnode5);
-    mesaageLine5.appendChild(linkElement3);
+    mesaageLine5.appendChild(NewLink("https://github.com/Zku11", "github.com/Zku11", "./images/gitHubIcon.png"));
     creatMesagge.appendChild(mesaageLine5);
     return creatMesagge;
 }
@@ -555,7 +542,7 @@ function CreateGeniusAtWorkMessage(){
     return NewPersonalProject("Genius At Work!",
         GetDialogLine("geniusAtWorkDescription"),
         ["./images/geniusAtWork/gawScreenshot1.jpg", "./images/geniusAtWork/gawScreenshot2.jpg", "./images/geniusAtWork/gawScreenshot3.jpg"],
-        "./images/geniusAtWork/gawvideo.mp4", [NewCsharpSkill(), NewBlenderSkill(), NewUnitySkill()]
+        "./images/geniusAtWork/gawvideo.mp4", [NewCsharpSkill(), NewUnitySkill(), NewDesignPatternsSkill(), NewBlenderSkill()]
     );
 }
 
@@ -575,7 +562,7 @@ function CreateQuadrupedMatchMessage(){
     return NewPersonalProject("Quadruped Match",
         GetDialogLine("quadrupedMtachDescription"),
         ["./images/quadrupedMatch/screenshot1.png", "./images/quadrupedMatch/screenshot2.png", "./images/quadrupedMatch/screenshot3.png"],
-        "./images/quadrupedMatch/trailer.mp4", [NewCsharpSkill(), NewBlenderSkill(), NewUnitySkill()]
+        "./images/quadrupedMatch/trailer.mp4", [NewCsharpSkill(),  NewUnitySkill(), NewDesignPatternsSkill(), NewBlenderSkill()]
     );
 }
 

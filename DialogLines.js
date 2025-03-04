@@ -131,6 +131,10 @@ function GetDialogLine(lineIdentifier){
             return ElectricityLine();
         case "ElectronicsSkill":
             return ElectronicsLine();
+        case "videoEditingSkill":
+            return VideoEdittingLine();
+        case "designPatternsSkill":
+            return DesignPatternsLine();
         //--------Portfolio----------
         case "portfolioQuestion":
             return PortfolioQuestion();
@@ -538,8 +542,22 @@ function ElectricityLine(){
 
 function ElectronicsLine(){
     return LineLanguageSelection(NewLine(
-        "Electronica",
+        "Electrónica",
         "Electronics"
+    ));
+}
+
+function VideoEdittingLine(){
+    return LineLanguageSelection(NewLine(
+        "Edición de video",
+        "Video editing"
+    ));
+}
+
+function DesignPatternsLine(){
+    return LineLanguageSelection(NewLine(
+        "Patrones de diseño",
+        "Design Patterns"
     ));
 }
 
