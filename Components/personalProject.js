@@ -68,13 +68,7 @@ function ProjectStoreLinks(steamSrc, itchIoSrc, playstoreSrc){
         let textnode3 = document.createTextNode("Playstore:");
         mesaageLine3.appendChild(textnode3);
         let mesaageLine4 = CreateMessageLine();
-        let linkElement = document.createElement("a");
-        linkElement.href = playstoreSrc;
-        let textnode4 = document.createTextNode("Enlace: " + playstoreSrc);
-        linkElement.setAttribute("rel", "noreferrer");
-        linkElement.setAttribute("target", "_blank");
-        linkElement.appendChild(textnode4);
-        mesaageLine4.appendChild(linkElement);
+        mesaageLine4.appendChild(NewLink(playstoreSrc, "Playstore link", "./images/playstore.png"));
         creatMesagge.appendChild(mesaageLine3);
         creatMesagge.appendChild(mesaageLine4);
     }

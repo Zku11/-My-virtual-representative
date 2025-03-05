@@ -123,8 +123,8 @@ function clickFunction(e){
             allowUserInteraction = true;
         });
         EnqueueFunction(function(){
-            UpdateOptions();
             StopScrollInterval();
+            UpdateOptions();
         });
     });
 }

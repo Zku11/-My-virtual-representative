@@ -125,7 +125,7 @@ function CreateIitialMessage(){
 }
 
 function CreateToEnglishMessage(){
-    return CreateGenericTextMessage("OK!");
+    return CreateGenericTextMessage("Hello! My name is Lucas and I am a software developer. I created this chat which replaces a complete website. It is capable of displaying images, videos... and you can even play video games on it!");
 }
 
 function CreateToSpanishMessage(){
@@ -390,7 +390,7 @@ function CreatePersonalInformationMessage(){
     locationMessageLine.appendChild(locationText);
     creatMesagge.appendChild(locationMessageLine);
     let mesaageLine3 = CreateMessageLine();
-    mesaageLine3.appendChild(NewLink("Email: lucaferan@gmail.com", "lucaferan@gmail.com", "./images/gmailIcon.png"));
+    mesaageLine3.appendChild(NewLink("mailto:lucaferan@gmail.com", "lucaferan@gmail.com", "./images/gmailIcon.png"));
     creatMesagge.appendChild(mesaageLine3);
     let mesaageLine4 = CreateMessageLine();
     mesaageLine4.appendChild(NewLink("https://www.linkedin.com/in/lucasferr87/", "/in/lucasferr87/", "./images/linkedinIcon.png"));
@@ -399,7 +399,7 @@ function CreatePersonalInformationMessage(){
     mesaageLine5.appendChild(NewLink("https://github.com/Zku11", "github.com/Zku11", "./images/gitHubIcon.png"));
     creatMesagge.appendChild(mesaageLine5);
     let mesaageLine6 = CreateMessageLine();
-    mesaageLine6.appendChild(NewLink("https://www.youtube.com/@lucasfernandez2700", "www.youtube.com/@lucasfernandez2700", "./images/youtubeIcon.png"));
+    mesaageLine6.appendChild(NewLink("https://www.youtube.com/@lucasfernandez2700", "@lucasfernandez2700", "./images/youtubeIcon.png"));
     creatMesagge.appendChild(mesaageLine6);
     return creatMesagge;
 }
@@ -458,13 +458,7 @@ function CreateMoreGamesMessage(){
     messaageLine4.appendChild(textnode2);
     creatMesagge.appendChild(messaageLine4);
     let mesaageLine3 = CreateMessageLine();
-    let linkElement = document.createElement("a");
-    linkElement.setAttribute("rel", "noreferrer");
-    linkElement.setAttribute("target", "_blank");
-    linkElement.href = "https://lucas-fernandez.itch.io/";
-    let textnode3 = document.createTextNode("https://lucas-fernandez.itch.io/");
-    linkElement.appendChild(textnode3);
-    mesaageLine3.appendChild(linkElement);
+    mesaageLine3.appendChild(NewLink("https://lucas-fernandez.itch.io/", "lucas-fernandez.itch.io", "./images/itchIo.png"));
     creatMesagge.appendChild(mesaageLine3);
     return creatMesagge;
 }
